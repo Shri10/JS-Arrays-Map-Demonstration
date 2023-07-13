@@ -78,3 +78,51 @@ console.log("Repeated digits are:", repeatedDigits);
 
 //-=-=-=-
 }
+
+
+//-Map-Dictionary Problems:
+{console.log("\tMap-Dictionary Problems:");
+
+console.log("\n\t1:\tRoll, record, repeat die; identify max/min times.");
+
+let dieResults = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0};
+
+while (true) {
+  let dieRoll = Math.floor(Math.random() * 6) + 1;
+  dieResults[dieRoll]++;
+
+  if (dieResults[dieRoll] === 10) break;
+}
+
+console.log("Die roll results:", dieResults);
+
+let maxCount = Math.max(...Object.values(dieResults));
+let minCount = Math.min(...Object.values(dieResults));
+
+let maxNumbers = Object.keys(dieResults).filter(key => dieResults[key] === maxCount);
+let minNumbers = Object.keys(dieResults).filter(key => dieResults[key] === minCount);
+
+console.log("Numbers that reached maximum times:", maxNumbers);
+console.log("Numbers that reached minimum times:", minNumbers);
+
+//-=-=-=-
+
+console.log("\n\t2:\tGenerate birth months, find common birthdays.");
+
+let birthdays = Array.from({length: 50}, () => Math.ceil(Math.random() * 12));
+let monthCount = {};
+
+birthdays.forEach(month => {
+  if (month in monthCount) monthCount[month]++;
+  else monthCount[month] = 1;
+});
+
+console.log("Individuals' birthdays per month:", monthCount);
+
+let sameMonthBirthdays = Object.keys(monthCount).filter(key => monthCount[key] > 1);
+
+console.log("Months with more than one birthday:", sameMonthBirthdays);
+
+//-=-=-=-
+
+}
